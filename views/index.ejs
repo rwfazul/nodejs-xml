@@ -1,11 +1,170 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel='stylesheet' href='/custom/stylesheets/style.css' />
+  <link rel='stylesheet' href='/vendors/materialize/materialize.css' />
+  <link type="text/css" rel="stylesheet" href="/vendors/materialize/style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header id="header" class="page-topbar">
+    <!-- start header nav-->
+    <div class="navbar-fixed">
+      <nav class="navbar-color base-color">
+        <div class="nav-wrapper">
+        </div>
+      </nav>
+    </div>
+  </header>
+  <!-- /Header -->
+
+  <!-- Content -->
+  <section class="content">
+    <div class="container">
+      <div class="section">
+        <div class="row">
+          <div class="col s12">
+            <h4 class="header">Processamento de XML com Node JS</h4>
+          </div>
+          <div class="col s12">
+            <ul class="collapsible popout " data-collapsible="accordion">
+              <li>
+                <div class="collapsible-header gradient-45deg-indigo-light-blue white-text">
+                  <h5>
+                    <i class="material-icons"></i>
+                    1. Validar XML com DTD das notas fiscais
+                  </h5>
+                </div>
+                <div class="collapsible-body">
+                  <div class="row">
+                    <div class="col s12 m8">
+                      <div class="input-field col s12 m6">
+                        <select id="nota-dtd">
+                          <option value="" disabled>Escolha a nota</option>
+                          <option value="nota1" selected>Nota 1</option>
+                          <option value="nota2" selected>Nota 2</option>
+                          <option value="nota3" selected>Nota 3</option>
+                          <option value="nota4" selected>Nota 4</option>
+                          <option value="nota5" selected>Nota 5</option>
+                          <option value="nota6" selected>Nota 6</option>
+                        </select>
+                        <label>Escolha a nota fiscal</label>
+                      </div>
+                    </div>
+                    <div class="col s12 m4">
+                      <button class="btn" id="get-dtd-validate">Validar com DTD</button>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col s12" id="result-dtd">
+                        <div id="loader-result-dtd">
+                            <div class="preloader-wrapper small active">
+                              <div class="spinner-layer spinner-blue-only">
+                                <div class="circle-clipper left">
+                                  <div class="circle"></div>
+                                </div>
+                                <div class="gap-patch">
+                                  <div class="circle"></div>
+                                </div>
+                                <div class="circle-clipper right">
+                                  <div class="circle"></div>
+                                </div>
+                              </div>
+                            </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="collapsible-header gradient-45deg-indigo-light-blue white-text">
+                  <h5>
+                    <i class="material-icons"></i>
+                    2. Validar XML com XML Schema das notas fiscais
+                  </h5>
+                </div>
+                <div class="collapsible-body">
+                  <div class="row">
+                    <div class="col s12 m8">
+                      <div class="input-field col s12 m6">
+                        <select id="nota-xsd">
+                          <option value="" disabled>Escolha a nota</option>
+                          <option value="nota1" selected>Nota 1</option>
+                          <option value="nota2" selected>Nota 2</option>
+                          <option value="nota3" selected>Nota 3</option>
+                          <option value="nota4" selected>Nota 4</option>
+                          <option value="nota5" selected>Nota 5</option>
+                          <option value="nota6" selected>Nota 6</option>
+                        </select>
+                        <label>Escolha a nota fiscal</label>
+                      </div>
+                    </div>
+                    <div class="col s12 m4">
+                      <button class="btn" id="get-xsd-validate">Validar com XML Schema</button>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col s12" id="result-xsd">
+                      <div id="loader-result-xsd">
+                        <div class="preloader-wrapper small active">
+                          <div class="spinner-layer spinner-blue-only">
+                            <div class="circle-clipper left">
+                              <div class="circle"></div>
+                            </div>
+                            <div class="gap-patch">
+                              <div class="circle"></div>
+                            </div>
+                            <div class="circle-clipper right">
+                              <div class="circle"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="collapsible-header gradient-45deg-indigo-light-blue white-text">
+                  <h5>
+                    <i class="material-icons"></i>
+                    3. Processar XML com XQuery
+                  </h5>
+                </div>
+                <div class="collapsible-body">
+                </div>
+              </li>
+              <li>
+                <div class="collapsible-header gradient-45deg-indigo-light-blue white-text">
+                  <h5>
+                    <i class="material-icons"></i>
+                    4. Processar XML com XSL
+                  </h5>
+                </div>
+                <div class="collapsible-body">
+                </div>
+              </li>
+            </ul>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /Content -->
+
+  <script src='/vendors/jquery/jquery.min.js'></script>
+  <script src='/vendors/materialize/materialize.min.js'></script>
+  <script src='/custom/index.js'></script>
+
+</body>
+
 </html>

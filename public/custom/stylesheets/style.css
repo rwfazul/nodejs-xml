@@ -1,0 +1,15 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.content {
+  padding-left: 50px;
+}
+
+.base-color {
+	background-color: #204C90 !important;
+}
+
+.base-color-dark {
+	background-color: #21376C !important;
+}
