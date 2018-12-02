@@ -32,7 +32,6 @@ $(function () {
     $('#get-dtd-validate').on('click', function () {
         loaderResultDTD.css("display", "block");
         $("#nota-dtd option:selected").each(function () {
-            var element = $(this);
             var nameNota = ($(this).text());
             var nota = ($(this).val());
             var result = $("#result-dtd");
