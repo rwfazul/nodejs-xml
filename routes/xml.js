@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-// var node_libxml = require('../services/node-libxml');
+var node_libxml = require('../services/node-libxml');
 var libxmljs = require('../services/libxmljs');
 var libxslt  = require('../services/libxslt');
 

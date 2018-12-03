@@ -1,7 +1,9 @@
-const fs = require('fs');
+const fs     = require('fs');
 const assert = require('assert');
 const libxml = require('libxmljs');
+const glob   = require('glob');
 
+const namespaceUri = 'http://www.portalfiscal.inf.br/nfe';
 console.log('using: libxmljs');
 
 // le arquivo xml
@@ -64,31 +66,28 @@ module.exports = {
 		}
 	},
 
+	// aplica xpath
 	getProducts: function (callback) {
-		var notas = ["nota1", "nota2", "nota3", "nota4", "nota5", "nota6"];
-		var arrayXml = [];
-		notas.forEach(nota => {
-			var xmlFilename = `./services/files/${nota}.xml`;
-			arrayXml.push(getXML(xmlFilename));
-		});
+		// carrega todas as notas
+		var notas = glob('./services/files/*.xml', { sync:true }).map(xmlPath => { return getXML(xmlPath) });
 		var products = [];
-		arrayXml.forEach(xml => {
-			var gchild = xml.find('//xmlns:prod', 'http://www.portalfiscal.inf.br/nfe');
+		notas.forEach(nota => {
+			var gchild = nota.find('//xmlns:prod', namespaceUri);
 			gchild.forEach(element => {
 				var product = {
-					cProd: element.get("./xmlns:cProd", 'http://www.portalfiscal.inf.br/nfe').text(),
-					xProd: element.get("./xmlns:xProd", 'http://www.portalfiscal.inf.br/nfe').text(),
-					qCom: Math.round(element.get("./xmlns:qCom", 'http://www.portalfiscal.inf.br/nfe').text() * 100)/100,
-					vUnTrib: (Math.round(element.get("./xmlns:vUnTrib", 'http://www.portalfiscal.inf.br/nfe').text() * 100)/100).toFixed(2)
+					cProd: element.get("./xmlns:cProd", namespaceUri).text(),
+					xProd: element.get("./xmlns:xProd", namespaceUri).text(),
+					qCom: Math.round(element.get("./xmlns:qCom", namespaceUri).text() * 100)/100,
+					vUnTrib: (Math.round(element.get("./xmlns:vUnTrib", namespaceUri).text() * 100)/100).toFixed(2)
 				};
 				products.push(product);
 			});
 		});
+		// ordena ascendente pelo valor unitario do produto
 		products.sort(function (p1, p2){
 			return (p1.vUnTrib - p2.vUnTrib);
 		});
-		
 		callback(products);
-		
 	}
+
 };

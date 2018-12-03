@@ -30,10 +30,10 @@ else
 libxml.freeSchemas();
 
 // xpath/xquery
-//let aRandomPathBoolean = libxml.xpathSelect('boolean(//some/path)');
+let result = libxml.xpathSelect("string(//*[local-name()='prod'])");
+console.log(result);
 
 libxml.freeXml(); 
-
 // libxml.clearAll();
 
 module.exports = libxml;
