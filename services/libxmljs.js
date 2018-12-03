@@ -73,7 +73,7 @@ module.exports = {
 		});
 		var products = [];
 		arrayXml.forEach(xml => {
-			gchild = xml.find('//xmlns:prod', 'http://www.portalfiscal.inf.br/nfe');
+			var gchild = xml.find('//xmlns:prod', 'http://www.portalfiscal.inf.br/nfe');
 			gchild.forEach(element => {
 				var product = {
 					cProd: element.get("./xmlns:cProd", 'http://www.portalfiscal.inf.br/nfe').text(),
