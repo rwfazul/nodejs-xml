@@ -13,7 +13,7 @@ $(function () {
     function printResult(typeValidation, xmlFileName, nameNota, success, container, err){
         var p = $("<p>");
         var icon = $("<i>").addClass("material-icons"); 
-        var text = `O XML da <a href="${xmlFileName}">${nameNota}</a> `;
+        var text = ` O XML da <a href="${xmlFileName}">${nameNota}</a> `;
         var textResult;
         if(success){
             icon.text("check_circle");
