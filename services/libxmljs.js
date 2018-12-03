@@ -32,8 +32,6 @@ module.exports = {
 	// validar dtd
 	validateDTD: function (nota, callback) {
 		var xmlFilename = `./services/files/${nota}.xml`;
-		console.log(xmlFilename);
-
 		var xml = getXML(xmlFilename);
 		var dtdValidate = libxml.Document.fromXml(xml, {
 			dtdvalid: true,
@@ -41,15 +39,15 @@ module.exports = {
 		});
 		if (!dtdValidate || dtdValidate.errors.length == 0) {
 			console.log('xml is valid (dtd)');
-			callback(xmlFilename);
+			callback(true);
 		}
 		else {
-			console.log('Error getting documents', dtdValidate.errors);
-			callback(xmlFilename, dtdValidate.errors);
+			console.log('xml is not valid (dtd): ' + dtdValidate.errors.toString());
+			callback(false, dtdValidate.errors.toString());
 		}
 	},
 
-	//validar XSD
+	// validar XSD
 	validateXSD: function (nota, callback) {
 		var xmlFilename = `./services/files/${nota}.xml`;
 		var xml = getXML(xmlFilename);
@@ -57,12 +55,12 @@ module.exports = {
 		var xsd = getXSD(xsdFilename);
 
 		if (xml.validate(xsd)) {
-			callback(xmlFilename);
 			console.log('xml is valid (xsd)');
+			callback(true);
 		}
 		else {
-			console.log('xml is not valid (xsd): ' + xml.validationErrors)
-			callback(xmlFileName, xml.validationErrors);
+			console.log('xml is not valid (xsd): ' + xml.validationErrors.toString());
+			callback(false, xml.validationErrors.toString());
 		}
 		// assert.equal(xml.validate(xsd), true);
 		// assert.equal(xml.validationErrors.length, 0);

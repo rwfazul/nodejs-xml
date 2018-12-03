@@ -8,10 +8,10 @@ $(function () {
     loaderResultDTD.css("display", "none");
     loaderResultXSD.css("display", "none");
 
-    function printResult(typeValidation, xmlFileName, nameNota, success, container){
+    function printResult(typeValidation, xmlFileName, nameNota, success, container, err){
         var p = $("<p>");
         var icon = $("<i>").addClass("material-icons"); 
-        var text = ` O XML da <a href=${xmlFileName}>${nameNota}</a> `;
+        var text = `O XML da <a href="${xmlFileName}">${nameNota}</a> `;
         var textResult;
         if(success){
             icon.text("check_circle");
@@ -23,6 +23,8 @@ $(function () {
             p.addClass("red-text");
             textResult = `não é válido pelo ${typeValidation} das notas fiscais`;
         }
+        if (err) 
+            textResult = `${textResult} <br/><br/> Erro:<br/> ${err}`;
         p.append(icon);
         p.append(text);
         p.append(textResult);
@@ -36,15 +38,17 @@ $(function () {
             var nota = ($(this).val());
             var result = $("#result-dtd");
             result.empty();
-            $.getJSON(`/validateDTD/${nota}`)
-                .done(function (xmlFileName) {
+            $.ajax({
+                url: `/validateDTD/${nota}?${new Date()}`,
+                success: function(data) {
                     loaderResultDTD.css("display", "none");
-                    printResult("DTD", xmlFileName, nameNota, true, result);
-                })
-                .fail(function (xmlFileName, validationErrors) {
-                    loaderResultXSD.css("display", "none");
-                    printResult("DTD", xmlFileName, nameNota, false, result);
-                });
+                    printResult("DTD", `/files/${nota}.xml`, nameNota, true, result);
+                },
+                error: function(data) {
+                    loaderResultDTD.css("display", "none");
+                    printResult("DTD", `/files/${nota}.xml`, nameNota, false, result, JSON.stringify(JSON.parse(data.responseText).err));
+                }
+            });
         });
     });
 
@@ -57,15 +61,17 @@ $(function () {
             result.empty();
             var p = $("<p>");
             var icon = $("<i>").addClass("material-icons");
-            $.getJSON(`/validateXSD/${nota}`)
-                .done(function (xmlFileName) {
+            $.ajax({
+                url: `/validateXSD/${nota}?${new Date()}`,
+                success: function(data) {
                     loaderResultXSD.css("display", "none");
-                    printResult("XML Schema", xmlFileName, nameNota, true, result);
-                })
-                .fail(function (xmlFileName, validationErrors) {
+                    printResult("XSD", `/files/${nota}.xml`, nameNota, true, result);
+                },
+                error: function(data) {
                     loaderResultXSD.css("display", "none");
-                    printResult("XML Schema", xmlFileName, nameNota, false, result);
-                });
+                    printResult("XSD", `/files/${nota}.xml`, nameNota, false, result, JSON.stringify(JSON.parse(data.responseText).err));
+                }
+            });
         });
     });
 });
