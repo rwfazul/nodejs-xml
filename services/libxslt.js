@@ -5,6 +5,7 @@ var xslFilename = `./services/files/notas.xsl`;
 
 module.exports = {
 
+	// processa xsl
 	processWithXSL: function (nota, callback) {
 		var xmlFilename = `./services/files/${nota}.xml`;
 		var stylesheet = libxslt.parse(
