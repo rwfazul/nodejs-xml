@@ -4,9 +4,11 @@ $(function () {
 
     var loaderResultDTD = $("#loader-result-dtd");
     var loaderResultXSD = $("#loader-result-xsd");
+    var loaderResultXSL = $("#loader-result-xsl");
 
     loaderResultDTD.css("display", "none");
     loaderResultXSD.css("display", "none");
+    loaderResultXSL.css("display", "none");
 
     function printResult(typeValidation, xmlFileName, nameNota, success, container, err){
         var p = $("<p>");
