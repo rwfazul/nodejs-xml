@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Created with Liquid Technologies Online Tools 1.0 (https://www.liquid-technologies.com) -->
 <xs:schema xmlns:tns="http://www.portalfiscal.inf.br/nfe" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.portalfiscal.inf.br/nfe" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="notas-schema2.xsd" namespace="http://www.w3.org/2000/09/xmldsig#" />
   <xs:element name="NFe">
@@ -174,49 +173,49 @@
                           <xs:element name="PIS">
                             <xs:complexType>
                               <xs:sequence>
-				<xs:choice>	
-		                        <xs:element name="PISAliq">
-		                          <xs:complexType>
-		                            <xs:sequence>
-		                              <xs:element name="CST" type="xs:unsignedByte" />
-      		                              <xs:element name="vBC" type="xs:decimal" />
-		                              <xs:element name="pPIS" type="xs:decimal" />
-		                              <xs:element name="vPIS" type="xs:decimal" />
-		                            </xs:sequence>
-		                          </xs:complexType>
-		                        </xs:element>					
-		                        <xs:element name="PISNT">
-		                          <xs:complexType>
-		                            <xs:sequence>
-		                              <xs:element name="CST" type="xs:unsignedByte" />
-		                            </xs:sequence>
-		                          </xs:complexType>
-		                        </xs:element>
-                                </xs:choice>
-                              </xs:sequence>
-                            </xs:complexType>
-                          </xs:element>
-                          <xs:element name="COFINS">
-                            <xs:complexType>
-                              <xs:sequence>
-                                <xs:choice>
-		                        <xs:element name="COFINSAliq">
-		                          <xs:complexType>
-		                            <xs:sequence>
-		                              <xs:element name="CST" type="xs:unsignedByte" />
-      		                              <xs:element name="vBC" type="xs:decimal" />
-		                              <xs:element name="pCOFINS" type="xs:decimal" />
-		                              <xs:element name="vCOFINS" type="xs:decimal" />
-		                            </xs:sequence>
-		                          </xs:complexType>
-		                        </xs:element>
-		                        <xs:element name="COFINSNT">
-		                          <xs:complexType>
-		                            <xs:sequence>
-		                              <xs:element name="CST" type="xs:unsignedByte" />
-		                            </xs:sequence>
-		                          </xs:complexType>
-		                        </xs:element>
+				                        <xs:choice>	
+      		                        <xs:element name="PISAliq">
+      		                          <xs:complexType>
+      		                            <xs:sequence>
+      		                              <xs:element name="CST" type="xs:unsignedByte" />
+            		                              <xs:element name="vBC" type="xs:decimal" />
+      		                              <xs:element name="pPIS" type="xs:decimal" />
+      		                              <xs:element name="vPIS" type="xs:decimal" />
+      		                            </xs:sequence>
+      		                          </xs:complexType>
+      		                        </xs:element>					
+      		                        <xs:element name="PISNT">
+      		                          <xs:complexType>
+      		                            <xs:sequence>
+      		                              <xs:element name="CST" type="xs:unsignedByte" />
+      		                            </xs:sequence>
+      		                          </xs:complexType>
+      		                        </xs:element>
+                                      </xs:choice>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="COFINS">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:choice>
+      		                        <xs:element name="COFINSAliq">
+      		                          <xs:complexType>
+      		                            <xs:sequence>
+      		                              <xs:element name="CST" type="xs:unsignedByte" />
+            		                              <xs:element name="vBC" type="xs:decimal" />
+      		                              <xs:element name="pCOFINS" type="xs:decimal" />
+      		                              <xs:element name="vCOFINS" type="xs:decimal" />
+      		                            </xs:sequence>
+      		                          </xs:complexType>
+      		                        </xs:element>
+      		                        <xs:element name="COFINSNT">
+      		                          <xs:complexType>
+      		                            <xs:sequence>
+      		                              <xs:element name="CST" type="xs:unsignedByte" />
+      		                            </xs:sequence>
+      		                          </xs:complexType>
+      		                        </xs:element>
                                 </xs:choice>
                               </xs:sequence>
                             </xs:complexType>

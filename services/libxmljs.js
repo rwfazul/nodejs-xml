@@ -19,6 +19,7 @@ var getXML = function (xmlFilename) {
 	return xml;
 }
 
+// le arquivo xsd
 var getXSD = function (xsdFilename) {
 	var xsd = libxml.parseXmlString(
 		fs.readFileSync(xsdFilename, 'utf-8').toString(),
@@ -29,7 +30,7 @@ var getXSD = function (xsdFilename) {
 
 module.exports = {
 
-	// validar dtd
+	// validar com dtd
 	validateDTD: function (nota, callback) {
 		var xmlFilename = `./services/files/${nota}.xml`;
 		var xml = getXML(xmlFilename);
@@ -47,13 +48,12 @@ module.exports = {
 		}
 	},
 
-	// validar XSD
+	// validar com xsd
 	validateXSD: function (nota, callback) {
 		var xmlFilename = `./services/files/${nota}.xml`;
 		var xml = getXML(xmlFilename);
 		var xsdFilename = './services/files/notas.xsd';
 		var xsd = getXSD(xsdFilename);
-
 		if (xml.validate(xsd)) {
 			console.log('xml is valid (xsd)');
 			callback(true);
@@ -62,12 +62,12 @@ module.exports = {
 			console.log('xml is not valid (xsd): ' + xml.validationErrors.toString());
 			callback(false, xml.validationErrors.toString());
 		}
+	}
+	
 		// assert.equal(xml.validate(xsd), true);
 		// assert.equal(xml.validationErrors.length, 0);
 
 		// xpath queries (sem xmlns nao funciona)
 		//var gchild = xml.get('//xmlns:natOp', 'http://www.portalfiscal.inf.br/nfe');
 		//console.log(gchild ? gchild.text() : gchild),
-	}
-	
 };
