@@ -46,17 +46,8 @@
                 <div class="collapsible-body">
                   <div class="row">
                     <div class="col s12 m8">
-                      <div class="input-field col s12 m6">
-                        <select id="nota-dtd">
-                          <option value="" disabled>Escolha a nota</option>
-                          <option value="nota1" selected>Nota 1</option>
-                          <option value="nota2" selected>Nota 2</option>
-                          <option value="nota3" selected>Nota 3</option>
-                          <option value="nota4" selected>Nota 4</option>
-                          <option value="nota5" selected>Nota 5</option>
-                          <option value="nota6" selected>Nota 6</option>
-                        </select>
-                        <label>Escolha a nota fiscal</label>
+                      <div id="nota-dtd">
+                        <% include partials/select_nota %>
                       </div>
                     </div>
                     <div class="col s12 m4">
@@ -65,23 +56,11 @@
                   </div>
                   <div class="row">
                     <div class="col s12" id="result-dtd">
-                        <div id="loader-result-dtd">
-                            <div class="preloader-wrapper small active">
-                              <div class="spinner-layer spinner-blue-only">
-                                <div class="circle-clipper left">
-                                  <div class="circle"></div>
-                                </div>
-                                <div class="gap-patch">
-                                  <div class="circle"></div>
-                                </div>
-                                <div class="circle-clipper right">
-                                  <div class="circle"></div>
-                                </div>
-                              </div>
-                            </div>
+                      <div id="loader-result-dtd">
+                        <% include partials/loader %>
+                      </div>
                     </div>
                   </div>
-                </div>
               </li>
               <li>
                 <div class="collapsible-header gradient-45deg-indigo-light-blue white-text">
@@ -93,17 +72,8 @@
                 <div class="collapsible-body">
                   <div class="row">
                     <div class="col s12 m8">
-                      <div class="input-field col s12 m6">
-                        <select id="nota-xsd">
-                          <option value="" disabled>Escolha a nota</option>
-                          <option value="nota1" selected>Nota 1</option>
-                          <option value="nota2" selected>Nota 2</option>
-                          <option value="nota3" selected>Nota 3</option>
-                          <option value="nota4" selected>Nota 4</option>
-                          <option value="nota5" selected>Nota 5</option>
-                          <option value="nota6" selected>Nota 6</option>
-                        </select>
-                        <label>Escolha a nota fiscal</label>
+                      <div id="nota-xsd">
+                        <% include partials/select_nota %>
                       </div>
                     </div>
                     <div class="col s12 m4">
@@ -113,19 +83,7 @@
                   <div class="row">
                     <div class="col s12" id="result-xsd">
                       <div id="loader-result-xsd">
-                        <div class="preloader-wrapper small active">
-                          <div class="spinner-layer spinner-blue-only">
-                            <div class="circle-clipper left">
-                              <div class="circle"></div>
-                            </div>
-                            <div class="gap-patch">
-                              <div class="circle"></div>
-                            </div>
-                            <div class="circle-clipper right">
-                              <div class="circle"></div>
-                            </div>
-                          </div>
-                        </div>
+                        <% include partials/loader %>
                       </div>
                     </div>
                   </div>
@@ -139,6 +97,7 @@
                   </h5>
                 </div>
                 <div class="collapsible-body">
+
                 </div>
               </li>
               <li>
@@ -149,15 +108,46 @@
                   </h5>
                 </div>
                 <div class="collapsible-body">
+                  <div class="row">
+                    <div class="col s12 m8">
+                      <div id="nota-xsl">
+                        <p>
+                          <a href="/getPageHtml/nota1">Nota 1</a>
+                        </p>
+                        <p>
+                          <a href="/getPageHtml/nota2">Nota 2</a>
+                        </p>
+                        <p>
+                          <a href="/getPageHtml/nota3">Nota 3</a>
+                        </p>
+                        <p>
+                          <a href="/getPageHtml/nota4">Nota 4</a>
+                        </p>
+                        <p>
+                          <a href="/getPageHtml/nota5">Nota 5</a>
+                        </p>
+                        <p>
+                          <a href="/getPageHtml/nota6">Nota 6</a>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col s12" id="result-xsl">
+                      <div id="loader-result-xsl">
+                        <% include partials/loader %>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </li>
             </ul>
 
-          </div>
+            </div>
 
+          </div>
         </div>
       </div>
-    </div>
   </section>
   <!-- /Content -->
 

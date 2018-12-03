@@ -32,8 +32,6 @@ module.exports = {
 	// validar dtd
 	validateDTD: function (nota, callback) {
 		var xmlFilename = `./services/files/${nota}.xml`;
-		console.log(xmlFilename);
-
 		var xml = getXML(xmlFilename);
 		var dtdValidate = libxml.Document.fromXml(xml, {
 			dtdvalid: true,
