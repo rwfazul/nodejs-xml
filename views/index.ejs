@@ -38,10 +38,10 @@
             <ul class="collapsible popout " data-collapsible="accordion">
               <li>
                 <div class="collapsible-header gradient-45deg-indigo-light-blue white-text">
-                  <h5>
+                  <h4 class="header">
                     <i class="material-icons"></i>
                     1. Validar XML com DTD das notas fiscais
-                  </h5>
+                  </h4>
                 </div>
                 <div class="collapsible-body">
                   <div class="row">
@@ -64,10 +64,10 @@
               </li>
               <li>
                 <div class="collapsible-header gradient-45deg-indigo-light-blue white-text">
-                  <h5>
+                  <h4 class="header">
                     <i class="material-icons"></i>
                     2. Validar XML com XML Schema das notas fiscais
-                  </h5>
+                  </h4>
                 </div>
                 <div class="collapsible-body">
                   <div class="row">
@@ -91,34 +91,61 @@
               </li>
               <li>
                 <div class="collapsible-header gradient-45deg-indigo-light-blue white-text">
-                  <h5>
+                  <h4 class="header">
                     <i class="material-icons"></i>
-                    3. Processar XML com XQuery
-                  </h5>
+                    3. Processar XML com XPath
+                  </h4>
                 </div>
                 <div class="collapsible-body">
                   <p>
-                    <a class="btn" href="/getProcessXquery">Processar XML com XQuery</a>
+                    <button class="btn" id="get-products">Processar XML com XQuery</button>
                   </p>
+                  <div id="table-products">
+                    <h4 class="header">Produtos</h4>
+                    <table class="responsive-table striped">
+                      <thead>
+                        <tr>
+                          <th>Código produto</th>
+                          <th>Nome produto</th>
+                          <th>Quantidade produto</th>
+                          <th>Valor unitário produto</th>
+                        </tr>
+                      </thead>
+                      <tbody id="products">
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </li>
               <li>
                 <div class="collapsible-header gradient-45deg-indigo-light-blue white-text">
-                  <h5>
+                  <h4 class="header">
                     <i class="material-icons"></i>
                     4. Processar XML com XSL
-                  </h5>
+                  </h4>
                 </div>
                 <div class="collapsible-body">
                   <div class="row">
                     <div class="col s12">
                       <div id="nota-xsl">
-                        <a class="btn" href="/getPageHtml/nota1">Nota 1  <i class="material-icons right">search</i></a>
-                        <a class="btn" href="/getPageHtml/nota2">Nota 2 <i class="material-icons right">search</i></a>
-                        <a class="btn" href="/getPageHtml/nota3">Nota 3 <i class="material-icons right">search</i></a>
-                        <a class="btn" href="/getPageHtml/nota4">Nota 4 <i class="material-icons right">search</i></a>
-                        <a class="btn" href="/getPageHtml/nota5">Nota 5 <i class="material-icons right">search</i></a>
-                        <a class="btn" href="/getPageHtml/nota6">Nota 6 <i class="material-icons right">search</i></a>
+                        <a class="btn" href="/getPageHtml/nota1">Nota 1
+                          <i class="material-icons right">search</i>
+                        </a>
+                        <a class="btn" href="/getPageHtml/nota2">Nota 2
+                          <i class="material-icons right">search</i>
+                        </a>
+                        <a class="btn" href="/getPageHtml/nota3">Nota 3
+                          <i class="material-icons right">search</i>
+                        </a>
+                        <a class="btn" href="/getPageHtml/nota4">Nota 4
+                          <i class="material-icons right">search</i>
+                        </a>
+                        <a class="btn" href="/getPageHtml/nota5">Nota 5
+                          <i class="material-icons right">search</i>
+                        </a>
+                        <a class="btn" href="/getPageHtml/nota6">Nota 6
+                          <i class="material-icons right">search</i>
+                        </a>
                       </div>
                     </div>
                   </div>

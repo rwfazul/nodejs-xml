@@ -21,6 +21,12 @@ router
       else res.status(200).json({ valid: valid });
 		});
   })
+  .get('/getProcessXpath', function (req, res) {
+    libxmljs.getProducts(function (products, err) {
+			if (err) res.status(500).json({ err: err });
+      else res.status(200).json(products);
+		});
+  })
   .get('/getPageHtml/:nota', function (req, res) {
     libxslt.processWithXSL(req.params['nota'], function (html) {
       return res.status(200).send(html);

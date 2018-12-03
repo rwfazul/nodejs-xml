@@ -62,12 +62,33 @@ module.exports = {
 			console.log('xml is not valid (xsd): ' + xml.validationErrors.toString());
 			callback(false, xml.validationErrors.toString());
 		}
-	}
-	
-		// assert.equal(xml.validate(xsd), true);
-		// assert.equal(xml.validationErrors.length, 0);
+	},
 
-		// xpath queries (sem xmlns nao funciona)
-		//var gchild = xml.get('//xmlns:natOp', 'http://www.portalfiscal.inf.br/nfe');
-		//console.log(gchild ? gchild.text() : gchild),
+	getProducts: function (callback) {
+		var notas = ["nota1", "nota2", "nota3", "nota4", "nota5", "nota6"];
+		var arrayXml = [];
+		notas.forEach(nota => {
+			var xmlFilename = `./services/files/${nota}.xml`;
+			arrayXml.push(getXML(xmlFilename));
+		});
+		var products = [];
+		arrayXml.forEach(xml => {
+			gchild = xml.find('//xmlns:prod', 'http://www.portalfiscal.inf.br/nfe');
+			gchild.forEach(element => {
+				var product = {
+					cProd: element.get("./xmlns:cProd", 'http://www.portalfiscal.inf.br/nfe').text(),
+					xProd: element.get("./xmlns:xProd", 'http://www.portalfiscal.inf.br/nfe').text(),
+					qCom: Math.round(element.get("./xmlns:qCom", 'http://www.portalfiscal.inf.br/nfe').text() * 100)/100,
+					vUnTrib: (Math.round(element.get("./xmlns:vUnTrib", 'http://www.portalfiscal.inf.br/nfe').text() * 100)/100).toFixed(2)
+				};
+				products.push(product);
+			});
+		});
+		products.sort(function (p1, p2){
+			return (p1.vUnTrib - p2.vUnTrib);
+		});
+		
+		callback(products);
+		
+	}
 };
