@@ -16,7 +16,7 @@ var getXML = function (xmlFilename) {
 		console.log('xml is well formed');
 	} catch (err) {
 		console.log('xml is not well formed');
-		process.exit(1);
+		return false;
 	}
 	return xml;
 }
@@ -36,6 +36,7 @@ module.exports = {
 	validateDTD: function (nota, callback) {
 		var xmlFilename = `./services/files/${nota}.xml`;
 		var xml = getXML(xmlFilename);
+		if( !xml ) return callback(false, 'xml not find or it is not well formed');
 		var dtdValidate = libxml.Document.fromXml(xml, {
 			dtdvalid: true,
 			baseUrl: './services/files/',
@@ -54,6 +55,7 @@ module.exports = {
 	validateXSD: function (nota, callback) {
 		var xmlFilename = `./services/files/${nota}.xml`;
 		var xml = getXML(xmlFilename);
+		if( !xml ) return callback(false, 'xml not find or it is not well formed');
 		var xsdFilename = './services/files/notas.xsd';
 		var xsd = getXSD(xsdFilename);
 		if (xml.validate(xsd)) {
